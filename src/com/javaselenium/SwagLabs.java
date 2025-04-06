@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import com.javaselenium.ScreenshotUtil;
 
 public class SwagLabs {
 	static WebDriver driver;
@@ -32,7 +33,9 @@ public class SwagLabs {
 
 		// maximize the win
 		driver.manage().window().maximize();
-
+		
+		//calling teh screenshot util call here to take screenshot
+		ScreenshotUtil.takeScreenshot(driver, "OpenWebsite");
 	}
 
 	public void Login() {
@@ -42,6 +45,7 @@ public class SwagLabs {
 
 		// password
 		driver.findElement(By.name("password")).sendKeys("secret_sauce");
+		ScreenshotUtil.takeScreenshot(driver, "LoginWithCredentials");
 
 		// clicking on login button
 		driver.findElement(By.id("login-button")).click();
@@ -52,6 +56,7 @@ public class SwagLabs {
 		System.out.println("Header - " + Actualheader);
 		String expectedheader = "Products";
 		Assert.assertEquals(Actualheader, expectedheader);
+		ScreenshotUtil.takeScreenshot(driver, "VerifyHeader");
 	}
 
 	public void SelectSortDropdown() {
@@ -74,6 +79,7 @@ public class SwagLabs {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState")
 				.equals("complete"));
+		ScreenshotUtil.takeScreenshot(driver, "SelectSortDropdown");
 	}
 
 	public void ClickProductDetail() throws InterruptedException {
@@ -97,13 +103,14 @@ public class SwagLabs {
 		String ActualProduct = driver.findElement(By.xpath("//div[@class='inventory_details_name']")).getText();
 		System.out.println("Header - " + ActualProduct);
 		Assert.assertEquals(ActualProduct, Product);
-
+		ScreenshotUtil.takeScreenshot(driver, "ProductDetailScreen");
 	}
 	
 	public void AddToCart() {
 		// Clicking on "Add To Cart" Button
 		WebElement cartButton = driver.findElement(By.xpath("//button[text()='ADD TO CART']"));
 		cartButton.click();
+		ScreenshotUtil.takeScreenshot(driver, "AddToCart");
 		
 	}
 	
@@ -117,6 +124,7 @@ public class SwagLabs {
 		
 		WebElement username = driver.findElement(By.xpath("//input[@id='user-name']"));
 		username.isDisplayed();
+		ScreenshotUtil.takeScreenshot(driver, "Logout_UserLoginScreen");
 	}
 
 	public void closeBroswer() {
