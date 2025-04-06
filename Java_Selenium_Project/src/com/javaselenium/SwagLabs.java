@@ -88,8 +88,6 @@ public class SwagLabs {
 			WebElement product = driver.findElement(By.xpath("(//div[@class='inventory_item_label']/a/div)[" + i + "]"));
 			String ActualProduct = product.getText();
 			Thread.sleep(1000);
-			System.out.println("Actual products : -" + ActualProduct);
-			Thread.sleep(1000);
 			if(ActualProduct.equalsIgnoreCase(Product)) {
 				product.click();
 				break;
