@@ -18,9 +18,10 @@ public class SwagLabs {
 	public void Browser() {
 
 		// set path to chrome driver
-		System.setProperty("webdriver.chrome.driver",
-				"E:\\Aishwarya\\eclipse\\drivers\\chromedriver-win32\\chromedriver.exe");
-
+		// user.dir => path to current project directory
+		String projectPath = System.getProperty("user.dir");
+		System.getProperty("webdriver.chrome.driver", projectPath + "/drivers/chromedriver.exe");
+		
 		// Open Chrome Browser
 		driver = new ChromeDriver();
 	}
